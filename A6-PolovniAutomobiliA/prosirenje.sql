@@ -1,0 +1,17 @@
+ALTER TABLE Vozilo
+ADD PocCena FLOAT(15,2),
+CHECK (PocCena >=0);
+ 
+CREATE TABLE Vlasnici (
+	VlasniciID INT NOT NULL,
+	Ime VARCHAR(20) NOT NULL,
+	Prezime VARCHAR(20) NOT NULL,
+	Telefon VARCHAR(20) NOT NULL,
+	Adresa VARCHAR(50) NOT NULL,
+	PrviVlasnik BIT NOT NULL,
+	PRIMARY KEY(VlasniciID)
+);
+ 
+ALTER TABLE Vozilo
+ADD VlasnikID INT NOT NULL,
+FOREIGN KEY(VlasnikID) REFERENCES Vlasnici(VlasniciID);

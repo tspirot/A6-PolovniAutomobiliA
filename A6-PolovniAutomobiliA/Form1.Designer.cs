@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.buttonSearch = new System.Windows.Forms.Button();
@@ -41,15 +43,27 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.numericUpDownOd = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownDo = new System.Windows.Forms.NumericUpDown();
+            this.textBoxKM = new System.Windows.Forms.TextBox();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.buttonPrikazi = new System.Windows.Forms.Button();
+            this.buttonExit = new System.Windows.Forms.Button();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -184,54 +198,15 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "Proizvodjac";
             // 
-            // tabPage3
-            // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 25);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(792, 487);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Uputstvo";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(43, 30);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(54, 16);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Godište";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(133, 30);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(26, 16);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "od:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(136, 60);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(26, 16);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "do:";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(57, 104);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(113, 16);
-            this.label8.TabIndex = 3;
-            this.label8.Text = "Kilometraža (max)";
-            // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.chart1);
+            this.tabPage2.Controls.Add(this.buttonExit);
+            this.tabPage2.Controls.Add(this.buttonPrikazi);
+            this.tabPage2.Controls.Add(this.listView1);
+            this.tabPage2.Controls.Add(this.textBoxKM);
+            this.tabPage2.Controls.Add(this.numericUpDownDo);
+            this.tabPage2.Controls.Add(this.numericUpDownOd);
             this.tabPage2.Controls.Add(this.label8);
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.label6);
@@ -243,6 +218,158 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Broj raspolozivih vozila";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(57, 104);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(113, 16);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "Kilometraža (max)";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(136, 60);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(26, 16);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "do:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(133, 30);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(26, 16);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "od:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(43, 30);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(54, 16);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Godište";
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(792, 487);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Uputstvo";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // numericUpDownOd
+            // 
+            this.numericUpDownOd.Location = new System.Drawing.Point(188, 30);
+            this.numericUpDownOd.Maximum = new decimal(new int[] {
+            3000,
+            0,
+            0,
+            0});
+            this.numericUpDownOd.Minimum = new decimal(new int[] {
+            1900,
+            0,
+            0,
+            0});
+            this.numericUpDownOd.Name = "numericUpDownOd";
+            this.numericUpDownOd.Size = new System.Drawing.Size(120, 22);
+            this.numericUpDownOd.TabIndex = 4;
+            this.numericUpDownOd.Value = new decimal(new int[] {
+            2012,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDownDo
+            // 
+            this.numericUpDownDo.Location = new System.Drawing.Point(188, 60);
+            this.numericUpDownDo.Maximum = new decimal(new int[] {
+            3000,
+            0,
+            0,
+            0});
+            this.numericUpDownDo.Minimum = new decimal(new int[] {
+            1900,
+            0,
+            0,
+            0});
+            this.numericUpDownDo.Name = "numericUpDownDo";
+            this.numericUpDownDo.Size = new System.Drawing.Size(120, 22);
+            this.numericUpDownDo.TabIndex = 5;
+            this.numericUpDownDo.Value = new decimal(new int[] {
+            2017,
+            0,
+            0,
+            0});
+            // 
+            // textBoxKM
+            // 
+            this.textBoxKM.Location = new System.Drawing.Point(188, 97);
+            this.textBoxKM.Name = "textBoxKM";
+            this.textBoxKM.Size = new System.Drawing.Size(120, 22);
+            this.textBoxKM.TabIndex = 6;
+            // 
+            // listView1
+            // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(18, 139);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(290, 256);
+            this.listView1.TabIndex = 7;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Proizvodjac";
+            this.columnHeader1.Width = 180;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Broj";
+            // 
+            // buttonPrikazi
+            // 
+            this.buttonPrikazi.Location = new System.Drawing.Point(18, 415);
+            this.buttonPrikazi.Name = "buttonPrikazi";
+            this.buttonPrikazi.Size = new System.Drawing.Size(115, 40);
+            this.buttonPrikazi.TabIndex = 8;
+            this.buttonPrikazi.Text = "Prikazi";
+            this.buttonPrikazi.UseVisualStyleBackColor = true;
+            this.buttonPrikazi.Click += new System.EventHandler(this.buttonPrikazi_Click);
+            // 
+            // buttonExit
+            // 
+            this.buttonExit.Location = new System.Drawing.Point(193, 415);
+            this.buttonExit.Name = "buttonExit";
+            this.buttonExit.Size = new System.Drawing.Size(115, 40);
+            this.buttonExit.TabIndex = 9;
+            this.buttonExit.Text = "Izadji";
+            this.buttonExit.UseVisualStyleBackColor = true;
+            // 
+            // chart1
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            this.chart1.Location = new System.Drawing.Point(336, 104);
+            this.chart1.Name = "chart1";
+            series1.ChartArea = "ChartArea1";
+            series1.IsValueShownAsLabel = true;
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(423, 340);
+            this.chart1.TabIndex = 10;
+            this.chart1.Text = "chart1";
             // 
             // Form1
             // 
@@ -258,6 +385,9 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -283,6 +413,15 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBoxKM;
+        private System.Windows.Forms.NumericUpDown numericUpDownDo;
+        private System.Windows.Forms.NumericUpDown numericUpDownOd;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.Button buttonExit;
+        private System.Windows.Forms.Button buttonPrikazi;
     }
 }
 

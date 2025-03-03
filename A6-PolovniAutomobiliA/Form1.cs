@@ -157,5 +157,51 @@ namespace A6_PolovniAutomobiliA
                 conn.Close();
             }
         }
+
+        private void buttonPrikazi_Click(object sender, EventArgs e)
+        {
+            int km;
+            if (!int.TryParse(textBoxKM.Text, out km))
+            {
+                MessageBox.Show("Unesite celobrojnu vrednost za kilometražu!");
+                textBoxKM.Focus();
+                textBoxKM.SelectAll();
+                return;
+            }
+            string upit = "SELECT p.Naziv AS Proizvodjac, COUNT(v.VoziloID) AS Broj " +
+                "FROM Vozilo v, Proizvodjac p, Model m " +
+                "WHERE v.ModelID=m.ModelID " +
+                "AND m.ProizvodjacID=p.ProizvodjacID " +
+                "AND v.GodinaProizvodnje>=@god " +
+                "AND v.GodinaProizvodnje<=@gdo " +
+                "AND v.PredjenoKM<@km " +
+                "GROUP BY p.Naziv";
+            SqlCommand cmd = new SqlCommand(upit, conn);
+            cmd.Parameters.AddWithValue("@god", (int)numericUpDownOd.Value);
+            cmd.Parameters.AddWithValue("@gdo", (int)numericUpDownDo.Value);
+            cmd.Parameters.AddWithValue("@km", km);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dtv = new DataTable();
+            try
+            {
+                da.Fill(dtv);
+                listView1.Items.Clear();
+                foreach (DataRow dr in dtv.Rows)
+                {
+                    ListViewItem lvi = new ListViewItem(dr[0].ToString());
+                    lvi.SubItems.Add(dr[1].ToString());
+                    listView1.Items.Add(lvi);
+                }
+                // popunjavanje chart-a
+                chart1.DataSource = dtv;
+                chart1.Series[0].XValueMember = "Proizvodjac";
+                chart1.Series[0].YValueMembers = "Broj";
+                chart1.Series[0].IsValueShownAsLabel = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
